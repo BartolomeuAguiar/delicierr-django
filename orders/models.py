@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from clients.models import Client
 
@@ -30,6 +31,18 @@ class Order (models.Model):
         ),
         max_length=2,
         default='CR',
+    )
+    payment_form = models.CharField(
+        _("Payment Form"),
+        max_length=2,
+        blank=True,
+        choices=(
+            ('CS', _('CASH')),
+            ('CC', _('CREDIT CARD')),
+            ('DC', _('DEBIT CARD')),
+            ('PX', _('PIX')),
+        ),
+        default='PX',
     )
     status_payment = models.CharField(
         choices=(
