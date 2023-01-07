@@ -4,8 +4,9 @@ from django.db import models
 # Create your models here.
 
 
-class Orders (models.Model):
+class Order (models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE)
+    total = models.FloatField(default=0.0)
     delivery_date = models.DateTimeField(
         'Delivery Date', auto_now=False, auto_now_add=False)
     for_delivery = models.BooleanField()
@@ -51,7 +52,7 @@ class Orders (models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Orders, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.CharField(max_length=150)
     product_id = models.PositiveIntegerField()
     variation = models.CharField(max_length=150)

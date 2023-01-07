@@ -25,6 +25,7 @@ class VariationInline(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
 
+    prepopulated_fields = {"slug": ("name",)}
     ordering = ('name',)
     inlines = [
         VariationInline,
