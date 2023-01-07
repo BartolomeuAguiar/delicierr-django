@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from .models import Perfil
+from .models import Client
 
 # Register your models here.
 
 
-@admin.register(Perfil)
-class PerfilAdmin(admin.ModelAdmin):
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
     '''Admin View for Perfil'''
 
-    ordering = ('user',)
+    ordering = ('name',)

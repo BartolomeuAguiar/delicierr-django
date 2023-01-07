@@ -1,11 +1,12 @@
-from django.contrib.auth.models import User
 from django.db import models
+
+from clients.models import Client
 
 # Create your models here.
 
 
 class Order (models.Model):
-    client = models.ForeignKey(User, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
     total = models.FloatField(default=0.0)
     delivery_date = models.DateTimeField(
         'Delivery Date', auto_now=False, auto_now_add=False)
