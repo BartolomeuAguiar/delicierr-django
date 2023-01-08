@@ -1,0 +1,151 @@
+
+{% extends "global/base.html" %}
+
+{% block title %}ORDER | {% endblock title %}
+
+
+{% block title_section %}
+    ORDER DETAILS
+{% endblock title_section %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col col-8 ">
+    
+            <div class="card h-100 w-100  text-white bg-white rounded-5 m-2 ">
+                <div class="card-body text-dark">
+                    <p class="position-relative">
+                        <span
+                            {% if order.status_payment == 'PG' %}
+                            
+                                class=" position-absolute top-50 start-50 badge translate-middle text-bg-success fs-4"
+                            {% elif order.status_payment == 'NP'%}
+                                class=" position-absolute top-50 start-50 badge translate-middle text-bg-danger fs-4"
+                            {% else %}
+                                class=" position-absolute top-50 start-50 badge translate-middle text-bg-warning fs-4"
+                            {% endif %}
+                        >
+                            {{ order.get_status_payment_display }}
+                        </span>
+                    </p>
+
+                    <h2 class="text-center card-title mt-4">
+                        <a href="#" class="text-decoration-none fw-bold ">
+                            {{ order }}
+                        </a>
+                        {% comment %} icon to inform if order is confirmed {% endcomment %}
+                        {% if order.status_order == 'CF' %}
+                            <i class="fa-solid fa-thumbs-up text-success "></i>
+                        {% endif %}
+                    </h2>
+                    <hr>
+
+                    <p class="card-text">
+                        <b>Cliente name: </b>
+                            <a href="./client_detail.html" data-bs-toggle="tooltip"
+                                data-bs-title="Click for client details">
+                                {{ order.client.name }}
+                            </a>
+                    </p>
+                    <p class="card-text">
+                        <b>Delivery date</b>: {{ order.delivery_date|date:"d/m/Y" }}
+                    </p>
+                    <p class="card-text">
+                        <b>Delivery time</b>: {{ order.delivery_date|date:"H:i" }}
+                    </p>
+                    <p class="card-text">
+                        <b>For delivery:</b> 
+                        
+                        {% if order.for_delivery %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+                            
+                    </p>
+                        {% if order.for_delivery %}
+                            <p class="card-text">
+                                <b>Delivery method:</b> {{order.get_delivery_method_display}}
+                            </p>
+    
+                            <p class="card-text">
+                                <b>Delivery address:</b> {{order.delivery_address}}
+                            </p>
+                            
+                            <div class="row pb-3">
+                                <a href="#" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#order-map"
+                                    aria-expanded="false" aria-controls="order-map"> show address in map</a>
+                            </div>
+                            <div id="order-map" class="w-100 collapse">
+                                <img src="../assets/img/map.png" alt="" class="w-100 img-fluid">
+                            </div>             
+                        {% endif %}
+                    
+                    
+                        <div class="row p-2">
+                            <div class="col border-dark borderborder-3 fs-4">
+                                <p class=""><b>Order:</b></p>
+        
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="text-center">
+                                <table class="table">
+                                    <thead>
+                                        <tr class="table-dark">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Descrição</th>
+                                            <th scope="col">Valor R$</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>50 brigadeiros</td>
+                                            <td>120,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">2</td>
+                                            <td>bolo M chocolate com morango</td>
+                                            <td>240,00</td>
+                                        </tr>
+                                        <tr class="fw-bold table-group-divider">
+                                            <td scope="row" colspan="2" class="text-end">TOTAL DO PEDIDO</td>
+                                            <td>360,00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row fs-3" id="order-comments">
+                            <p><b>Comments</b></p>
+                            <p class="bg-warning">Entregar somente após as 18:30 pois a cliente estára em estado de alegria.</p>
+                        </div>
+        
+        
+                        <div class="d-flex justify-content-end p-0 fs-5">
+                            <div class="col-4 ">
+                                <a href="#" class=" btn btn-lg btn-danger ">
+                                    <i class="fa-regular fa-times-circle"></i>
+                                    Cancel order
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="btn btn-lg btn-success">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                    Finish order
+                                </a>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        {% endblock content %}
+            
+        </div>
+    </div>
+</div>
+

@@ -9,29 +9,25 @@
 <body class="bg-dark">
 
     {% include 'global/partials/navbar.html' %}
+    
 
     <main class="container-fluid bg-dark pt-5">
 
         
         
-        {% block title_section %}
-            
-        {% endblock title_section %}
+        <div class="container text-center">
+            <h2 class="p-2 border-botton fw-bold display-6 mt-5 text-white">
+                {% block title_section %}
+                
+                {% endblock title_section %}
+            </h2>
+        </div>
             
 
-        <div class="d-flex">
-            <div id="order-list" class="container px-4 py-1">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 align-items-stretch g-4 py-2">
-                   {% comment %} inicio das orders {% endcomment %}
-                   
-                   {% block content %}
-                    
-                   {% endblock content %}
-                    
-                   {% comment %} fim das orders {% endcomment %}
-                </div>
-            </div>
-        </div>
+        {% block content %}
+         
+        {% endblock content %}
+        
     </main>
     {% include 'global/partials/footer.html' %}
 

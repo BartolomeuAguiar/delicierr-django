@@ -64,11 +64,15 @@
             <p class="card-text text-center"><b>Order Resumed</b></p>
             <hr>
             <ul class="list-group list-group-flush">
+                
+                
+                    
                 <li class="list-group-item">1 Bolo</li>
                 <li class="list-group-item">50 Brigadeiro</li>
             </ul>
             <div class="row">
-                <a href="#" class="btn btn-primary btn-block fw-bold">
+                <a href="{% url 'orders:order' order.id %}"
+                class="btn btn-primary btn-block fw-bold">
                     <i class="fa-solid fa-eye me-1"></i>
                     More details...
                 </a>
