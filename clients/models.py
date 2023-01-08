@@ -15,7 +15,12 @@ class Client(models.Model):
     )
     address = models.CharField(_("Address"), max_length=500, blank=True)
     birthday = models.DateField(
-        _("Birthday"), auto_now=False, auto_now_add=False, blank=True)
+        _("Birthday"),
+        auto_now=False,
+        auto_now_add=False,
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         """Meta definition for Perfil."""

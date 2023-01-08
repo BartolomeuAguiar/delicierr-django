@@ -1,9 +1,25 @@
-{% extends "global/base_copy.html" %}
+{% extends "global/base.html" %}
 
 {% block title %} HOME | {% endblock title %}
 
 
+{% block title_section %}
+    <div class="container text-center">
+        <h2 class="p-2 border-botton fw-bold display-6 mt-4 text-white">ORDERS</h2>
+    </div>
+{% endblock title_section %}
+    
 {% block content %}
-    {% include 'orders/partials/order.html' %}
+
+    {% for order in orders %}
+        {% include 'orders/partials/order.html' %}
+    {% empty %}
+        <div class="col-12 text-white">
+            <div class="row">
+                <h1>No Orders To Show</h1>
+            </div>
+        </div>
+    {% endfor %}
+    
 {% endblock content %}
     

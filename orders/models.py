@@ -7,6 +7,8 @@ from clients.models import Client
 
 
 class Order (models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     total = models.FloatField(default=0.0)
     delivery_date = models.DateTimeField(
@@ -23,7 +25,7 @@ class Order (models.Model):
     )
     delivery_address = models.CharField(blank=True, max_length=300)
     comments = models.TextField(max_length=500, blank=True)
-    status_pedido = models.CharField(
+    status_order = models.CharField(
         choices=(
             ('CR', 'CREATED'),
             ('CL', 'CANCELED'),
@@ -60,9 +62,7 @@ class Order (models.Model):
         verbose_name_plural = 'Orders'
 
     def __str__(self):
-        return f'{self.pk}-{self.client}-\
-            {self.delivery_date.day}-{self.delivery_date.month}-\
-            {self.delivery_date.year}'
+        return f'{self.pk}-{self.delivery_date.year}'
 
 
 class OrderItem(models.Model):
