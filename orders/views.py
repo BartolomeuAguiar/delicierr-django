@@ -8,5 +8,5 @@ from .models import Order
 class OrderListViewHome(ListView):
     model = Order
     context_object_name = 'orders'
-    ordering = ['pk']
+    ordering = ['delivery_date']
     template_name = 'orders/pages/home.html'

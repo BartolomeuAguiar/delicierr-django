@@ -17,7 +17,7 @@
                 </span>
             </p>
             <h4 class="text-center card-title">
-                <a href="./order-detail.html" class="text-decoration-none fw-semibold">
+                <a href="#" class="text-decoration-none fw-semibold">
                     {{ order }}
                 </a>
             </h4>
@@ -47,14 +47,13 @@
             </p>
                 {% if order.for_delivery %}
                     <p class="card-text">
-                        <b>Delivery method:</b> Personalizada Deliciê
+                        <b>Delivery method:</b> {{order.get_delivery_method_display}}
                     </p>
-                    
+
                     <p class="card-text">
-                        <b>Delivery address:</b> Avenida dos mascotinho, nº459, 13 de setembro.
+                        <b>Delivery address:</b> {{order.delivery_address}}
                     </p>
-                {% else %}
-                    
+                                    
                 {% endif %}
             
             
@@ -65,7 +64,7 @@
                 <li class="list-group-item">50 Brigadeiro</li>
             </ul>
             <div class="row">
-                <a href="" class="btn btn-primary btn-block fw-bold">
+                <a href="#" class="btn btn-primary btn-block fw-bold">
                     <i class="fa-solid fa-eye me-1"></i>
                     More details...
                 </a>
