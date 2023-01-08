@@ -1,6 +1,6 @@
 <!-- Start order content -->
 <div class="col pb-3">
-    <div class="card h-100  text-white bg-white rounded-5 m-2">
+    <div class="card h-100 w-100  text-white bg-white rounded-5 m-2">
         <div class="card-body text-dark">
             <p class="position-relative">
                 <span
@@ -20,6 +20,10 @@
                 <a href="#" class="text-decoration-none fw-semibold">
                     {{ order }}
                 </a>
+                {% comment %} icon to inform if order is confirmed {% endcomment %}
+                {% if order.status_order == 'CF' %}
+                    <i class="fa-solid fa-thumbs-up text-success"></i>
+                {% endif %}
             </h4>
             <hr>
             <p class="card-text">
@@ -57,7 +61,7 @@
                 {% endif %}
             
             
-            <p class="card-text text-center"><b>Order</b></p>
+            <p class="card-text text-center"><b>Order Resumed</b></p>
             <hr>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">1 Bolo</li>

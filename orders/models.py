@@ -17,7 +17,7 @@ class Order (models.Model):
 
     delivery_method = models.CharField(
         choices=(
-            ('P', 'Própia'),
+            ('P', 'Própria'),
             ('T', 'App Terceirizado')
         ),
         max_length=1,
@@ -30,6 +30,7 @@ class Order (models.Model):
             ('CR', 'CREATED'),
             ('CL', 'CANCELED'),
             ('CF', 'CONFIRMED'),
+            ('FN', 'FINISHED'),
         ),
         max_length=2,
         default='CR',
@@ -62,7 +63,7 @@ class Order (models.Model):
         verbose_name_plural = 'Orders'
 
     def __str__(self):
-        return f'{self.pk}-{self.delivery_date.year}'
+        return str(f'{self.pk}-{self.delivery_date.year}')
 
 
 class OrderItem(models.Model):
@@ -79,6 +80,3 @@ class OrderItem(models.Model):
     class Meta:
         verbose_name = "Order Item"
         verbose_name_plural = "Order Itens"
-
-    def __str__(self):
-        return self.pk
