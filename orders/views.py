@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, View
 
 from .models import Order
 
@@ -34,3 +34,15 @@ class OrderDetailView(DetailView):
             status_order='CL',
         )
         return qs
+
+
+class AddOrderItemView(View):
+    pass
+
+
+class RemoveOrderItemView(View):
+    pass
+
+
+class OrderView(View):
+    pass
