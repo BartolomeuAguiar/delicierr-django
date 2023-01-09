@@ -1,29 +1,30 @@
+{% load static %}
 <nav class="navbar navbar-expand-md fixed-top fs-4 navbar-dark bg-dark border-bottom border-white mb-5"
-        aria-label="navbar">
-        <div class="container-fluid fw-bold">
-            <a href="{% url 'orders:home' %}" class="navbar-brand fs-3 text-danger">DeliciêRR</a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
-                aria-controls="navbar" aria-expanded="false" aria-label="Navbar Button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a href="{% url 'orders:home' %}" class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link disabled">Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link disabled">Models</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link disabled">Clients</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link disabled">Settings</a>
-                    </li>
-                </ul>
-            </div>
+    aria-label="navbar">
+    <div class="container-fluid fw-bold">
+        <a href="{% url 'orders:home' %}" class="navbar-brand fs-3 text-danger">DeliciêRR</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Navbar Button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a href="{% url 'orders:home' %}" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">Models</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">Settings</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>

@@ -1,5 +1,5 @@
-
 {% extends "global/base.html" %}
+{% load static %}
 
 {% block title %}ORDER | {% endblock title %}
 
@@ -80,7 +80,7 @@
                                     aria-expanded="false" aria-controls="order-map"> show address in map</a>
                             </div>
                             <div id="order-map" class="w-100 collapse">
-                                <img src="../assets/img/map.png" alt="" class="w-100 img-fluid">
+                                <img src="{% static '/assets/img/map.png' %}" alt="" class="w-100 img-fluid">
                             </div>             
                         {% endif %}
                     

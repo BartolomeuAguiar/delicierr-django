@@ -36,13 +36,5 @@ class OrderDetailView(DetailView):
         return qs
 
 
-class AddOrderItemView(View):
-    pass
-
-
-class RemoveOrderItemView(View):
-    pass
-
-
-class OrderView(View):
+class AddOrderView(View):
     pass
