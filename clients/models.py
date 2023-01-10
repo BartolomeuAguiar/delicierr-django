@@ -10,7 +10,7 @@ class Client(models.Model):
     celphone = models.CharField(
         _("Celphone"),
         max_length=15,
-        blank=False,
+        blank=True,
         unique=True,
     )
     address = models.CharField(_("Address"), max_length=500, blank=True)

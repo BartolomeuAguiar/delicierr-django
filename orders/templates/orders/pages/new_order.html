@@ -1,8 +1,18 @@
 {% extends "global/base.html" %}
 {% load static %}
+{% block title %} New Order | {% endblock title %}
+
+
+{% block title_section %}
+    New Order
+{% endblock title_section %}
+    
 
 {% block content %}
-    <h1 class="text-danger">Oláaaa</h1>
-    {% include 'orders/partials/form_new_order.html' %}
+<div class="row justify-content-center">
+    <div class="col-8">
+        {% include 'orders/partials/form_new_order.html' %}
+    </div>
+</div>
 {% endblock content %}
     

@@ -15,7 +15,6 @@ class NewOrderForm(forms.ModelForm):
         model = Order
         fields = [
             'client',
-            'total',
             'delivery_date',
             'for_delivery',
             'delivery_method',
@@ -24,6 +23,8 @@ class NewOrderForm(forms.ModelForm):
             'status_payment',
         ]
         widgets = {
+            # 'client': forms.TextInput(
+            # ),
             'delivery_method': forms.Select(
                 choices=(
                     ('P', 'Própria'),
