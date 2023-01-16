@@ -1,0 +1,30 @@
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <th scope="col">#</th>
+                <th scope="col">Client Name</th>
+                <th scope="col">Cell Number</th>
+                <th scope="col">Order</th>
+            </thead>
+            <tbody>
+                
+                {% for client in clients %}    
+                    <tr>
+                        <th scope="row">{{ client.pk }}</th>
+                        <td>{{ client.name }}</td>
+                        <td>{{ client.celphone }}</td>
+                        <td>
+                            <a href=" {% url 'orders:order_create' client.id %}" 
+                            class="btn btn-success">
+                                <i class="fa-sharp fa-solid fa-cart-plus text-white"></i>
+
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}  
+            </tbody>
+        </table>
+    </div>
+</div>

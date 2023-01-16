@@ -1,10 +1,13 @@
+from django.forms import inlineformset_factory
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView, View
 
+from clients.models import Client
 from orders.forms import NewOrderForm
+from products.models import Variation
 
-from .models import Order
+from .models import Order, OrderItem
 
 # Create your views here.
 
@@ -40,29 +43,28 @@ class OrderDetailView(DetailView):
         return qs
 
 
-class NewOrderView(View):
-    def get_order(self, id=None):
-        order = None
+class ShowClientsToNewOrderView(View):
+    def render_order(self):
+        clients = Client.objects.all()
 
-        if id is not None:
-            order = Order.objects.filter(
-                pk=id
-            ).first()
-
-            if not order:
-                raise Http404
-        return order
-
-    def render_order(self, form):
         return render(
             self.request,
-            'orders/pages/new_order.html',
+            'orders/pages/clients.html',
             context={
-                'form': form
+                'clients': clients,
             }
         )
 
     def get(self, request, id=None):
-        order = self.get_order(id)
-        form = NewOrderForm(instance=order)
-        return self.render_order(form)
+        return self.render_order()
+
+
+def create_order(request, pk):
+    client = Client.objects.get(id=pk)
+    produtos = Variation.objects.all()
+    # TODO criar template para mostrar produtos e adicionar ao carrinho
+    context = {
+        'cliente': client,
+        'produtos': produtos,
+    }
+    return render(request, 'orders/pages/new_order_itens.html', context)

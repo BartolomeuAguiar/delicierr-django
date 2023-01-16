@@ -74,14 +74,14 @@
                             <p class="card-text">
                                 <b>Delivery address:</b> {{order.delivery_address}}
                             </p>
-                            
-                            <div class="row pb-3">
+                            {% comment %} TODO implementação futura {% endcomment %}
+                            {% comment %} <div class="row pb-3">
                                 <a href="#" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#order-map"
                                     aria-expanded="false" aria-controls="order-map"> show address in map</a>
                             </div>
                             <div id="order-map" class="w-100 collapse">
                                 <img src="{% static '/assets/img/map.png' %}" alt="" class="w-100 img-fluid">
-                            </div>             
+                            </div>              {% endcomment %}
                         {% endif %}
                     
                     
