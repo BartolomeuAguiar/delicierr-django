@@ -1,10 +1,8 @@
-from django.forms import inlineformset_factory
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView, View
 
 from clients.models import Client
-from orders.forms import NewOrderForm
 from products.models import Variation
 
 from .models import Order, OrderItem
