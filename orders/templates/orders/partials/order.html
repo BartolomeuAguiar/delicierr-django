@@ -27,7 +27,7 @@
             </h4>
             <hr>
             <p class="card-text">
-                <b>Cliente name: </b>
+                <b>Client name: </b>
                     <a href="./client_detail.html" data-bs-toggle="tooltip"
                         data-bs-title="Click for client details">
                         {{ order.client.name }}
@@ -49,7 +49,8 @@
                 {% endif %}
                     
             </p>
-                {% if order.for_delivery %}
+                <!--TODO Acho isto desnecessário aqui só polui o template, confirmar com marcella-->
+                {% comment %} {% if order.for_delivery %}
                     <p class="card-text">
                         <b>Delivery method:</b> {{order.get_delivery_method_display}}
                     </p>
@@ -58,17 +59,18 @@
                         <b>Delivery address:</b> {{order.delivery_address}}
                     </p>
                                     
-                {% endif %}
+                {% endif %} {% endcomment %}
             
             
-            <p class="card-text text-center"><b>Order Resumed</b></p>
+            <p class="card-text text-center"><b>Order Resume</b></p>
             <hr>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush ms-3 mb-3">
                 
                 
-                    
-                <li class="list-group-item">1 Bolo</li>
-                <li class="list-group-item">50 Brigadeiro</li>
+                {% for item in order.orderitem_set.all %}
+                    <li>{{ item.amount }} {{ item.product }} {{ item.variation }}</li>
+                {% endfor %}
+                
             </ul>
             <div class="row">
                 <a href="{% url 'orders:show_order' order.id %}"

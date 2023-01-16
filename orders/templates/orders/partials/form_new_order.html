@@ -1,14 +1,21 @@
-
+<h2 class="text-center  my-4 text-white">Add Order For <strong>{{cliente.name}}</strong> </h2></div>
 
 <div class="card">
     <div class="card-body">
-        <form action="#" method="get">
+        {{request.client.name}}
+        <form action="" method="POST">
             {% csrf_token %}
-            <div class="row">
-                {{ form.client.errors }}
-                <label for="{{ form.client.id_for_label }}">Client Name</label>
-                {{ form.client }}
-            </div>
+                <hr/>
+            
+            Customer : {{cliente.name}}
+
         </form>
+        <ul>
+            
+            {% for produto in produtos %}
+                <li>{{produto.product}} {{produto.name}}</li>
+            {% endfor %}
+                
+        </ul>
     </div>
 </div>

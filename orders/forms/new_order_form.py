@@ -23,8 +23,12 @@ class NewOrderForm(forms.ModelForm):
             'status_payment',
         ]
         widgets = {
-            # 'client': forms.TextInput(
+            # 'client': forms.Select(
+            #     attrs={
+            #         '': 'disabled',
+            #     }
             # ),
+
             'delivery_method': forms.Select(
                 choices=(
                     ('P', 'Própria'),

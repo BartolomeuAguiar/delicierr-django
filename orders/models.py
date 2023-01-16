@@ -72,6 +72,7 @@ class OrderItem(models.Model):
     product_id = models.PositiveIntegerField()
     variation = models.CharField(max_length=150)
     variation_id = models.PositiveIntegerField()
+    sabor = models.CharField(max_length=50, blank=True)
     price = models.FloatField()
     price_additional = models.FloatField(blank=True, default=0.0)
     price_discount = models.FloatField(blank=True, default=0.0)

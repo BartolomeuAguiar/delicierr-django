@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 
 from . import views
 
@@ -11,8 +11,12 @@ urlpatterns = [
     path('orders/<int:pk>/', views.OrderDetailView.as_view(),
          name="show_order"
          ),
-    path('orders/neworder/', views.NewOrderView.as_view(),
-         name="neworder"
+    path('orders/neworder/', views.ShowClientsToNewOrderView.as_view(),
+         name="clients-new-order"
+         ),
+    path('orders/<int:pk>',
+         views.create_order,
+         name='order_create'
          ),
 
 ]

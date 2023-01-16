@@ -18,34 +18,18 @@ class Category(models.Model):
 class Product(models.Model):
     active = models.BooleanField(_('Active'))
     name = models.CharField(_('Title'), max_length=150)
-    description_short = models.CharField(
-        _("Short Description"), max_length=100)
-    description_long = models.CharField(
+    description = models.CharField(
         _("Long Description"),
         max_length=300,
         blank=True
     )
-    image = models.ImageField(
-        _("Product Image"),
-        upload_to='product_images/%Y/%m/',
-        max_length=None,
-        blank=True,
-        null=True,
-    )
     slug = models.SlugField(unique=True)
     price = models.FloatField()
-    type = models.CharField(
-        choices=(
-            ('V', 'Variable'),
-            ('S', 'Simple'),
-        ),
-        max_length=50,
-    )
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'{self.description_short}'
+        return f'{self.name}'
 
 
 class Variation(models.Model):
