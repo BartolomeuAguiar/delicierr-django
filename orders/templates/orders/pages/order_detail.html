@@ -100,6 +100,8 @@
                                         <tr class="table-dark">
                                             <th scope="col">#</th>
                                             <th scope="col">Product</th>
+                                            <th scope="col">Product Variation</th>
+                                            <th scope="col">Flavor</th>
                                             <th scope="col">QTD</th>
                                             <th scope="col">Total Item</th>
                                         </tr>
@@ -109,13 +111,15 @@
                                             {% for item in order.orderitem_set.all %}
                                                 <td scope="row">{{ item.id }}</td>
                                                 <td>{{ item.product }}</td>
+                                                <td>{{ item.variation }} </td>
+                                                <td>{{ item.sabor }}</td>
                                                 <td>{{ item.amount }}</td>
                                                 <td>{{ item.price|formata_preco }}</td>
                                             {% endfor %}
                                         </tr>
                                         
                                         <tr class="fw-bold table-group-divider">
-                                            <td scope="row" colspan="3" class="text-end">TOTAL DO PEDIDO</td>
+                                            <td scope="row" colspan="5" class="text-end">TOTAL DO PEDIDO</td>
                                             <td>{{ order.total|formata_preco }}</td>
                                         </tr>
                                     </tbody>
