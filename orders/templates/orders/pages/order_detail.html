@@ -1,5 +1,6 @@
 {% extends "global/base.html" %}
 {% load static %}
+{% load bafilters %}
 
 {% block title %}ORDER | {% endblock title %}
 
@@ -90,6 +91,7 @@
                                 <p class=""><b>Order:</b></p>
         
                             </div>
+                            
                         </div>
                         <div class="">
                             <div class="text-center">
@@ -97,24 +99,24 @@
                                     <thead>
                                         <tr class="table-dark">
                                             <th scope="col">#</th>
-                                            <th scope="col">Descrição</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">QTD</th>
                                             <th scope="col">Valor R$</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td scope="row">1</td>
-                                            <td>50 brigadeiros</td>
-                                            <td>120,00</td>
+                                            {% for item in order.orderitem_set.all %}
+                                                <td scope="row">{{ item.id }}</td>
+                                                <td>{{ item.product }}</td>
+                                                <td>{{ item.amount }}</td>
+                                                <td>{{ item.price|formata_preco }}</td>
+                                            {% endfor %}
                                         </tr>
-                                        <tr>
-                                            <td scope="row">2</td>
-                                            <td>bolo M chocolate com morango</td>
-                                            <td>240,00</td>
-                                        </tr>
+                                        
                                         <tr class="fw-bold table-group-divider">
-                                            <td scope="row" colspan="2" class="text-end">TOTAL DO PEDIDO</td>
-                                            <td>360,00</td>
+                                            <td scope="row" colspan="3" class="text-end">TOTAL DO PEDIDO</td>
+                                            <td>{{ order.total|formata_preco }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -122,7 +124,7 @@
                         </div>
                         <div class="row fs-3" id="order-comments">
                             <p><b>Comments</b></p>
-                            <p class="bg-warning">Entregar somente após as 18:30 pois a cliente estára em estado de alegria.</p>
+                            <p class="bg-warning">{{order.comments}}</p>
                         </div>
         
         
