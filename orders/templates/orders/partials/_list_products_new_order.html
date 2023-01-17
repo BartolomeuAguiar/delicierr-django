@@ -1,0 +1,44 @@
+<h2 class="text-center  my-4 text-white">Add Order For <strong>{{cliente.name}}</strong> </h2></div>
+
+<div class="card">
+    <div class="card-body">
+        {{request.client.name}}
+        Custumer : {{cliente.name}}
+        
+        <div class="row">
+            {% for produto in produtos %}
+                <div class="col">
+                    <div class="card" style="width: 24rem">
+                        <div class="card-body text-center ">
+                            <h4 class="card-title fw-bold">{{ produto.name }}</h4>
+                            
+                            <a href="{% url 'products:detail' produto.pk %}" class="btn btn-primary">Detalhar</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!--
+            TODO mostra o carrinho sendo montado
+        
+        -->
+        <div class="row text-danger">
+            <div class="col">
+                algo aqui
+                {% if request.session.carrinho %}
+                    
+                    <ul>
+                        <li>daqui</li>
+                        {% for item in carrinho.values %}
+                            
+                            <li>{{item.product_name}}</li>  
+                        {% endfor %}
+                    </ul>
+                
+                
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

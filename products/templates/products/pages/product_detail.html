@@ -1,0 +1,40 @@
+{% extends 'global/base.html' %}
+
+{% load static %}
+{% block title %} New Order | {% endblock title %}
+
+
+
+
+{% block content %}
+
+    
+    <div class="container text-white">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <h1 class="text-white">Select a {{produto.name}} Variation</h1>
+                
+                {% include 'global/partials/_messages.html' %}
+
+
+                <form action=" {% url 'products:add_order_item' %}" id="form_add_to_cart">
+                    <div class="form-group">
+                        <select id="select-variations" name="vid" class="form-control">
+                            
+                            {% for variation in produto.variation_set.all %}
+                                <option value="{{ variation.pk }}">{{variation.name}}</option>
+                            {% endfor %}
+                                
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="orderitem_sabor">Sabor</label>
+                        <input type="text" name="orderitem_sabor" id="orderitem_sabor">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Save Order</button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+{% endblock content %}

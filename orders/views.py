@@ -1,11 +1,10 @@
-from django.http import Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from django.views.generic import DetailView, ListView, View
 
 from clients.models import Client
-from products.models import Variation
+from products.models import Product
 
-from .models import Order, OrderItem
+from .models import Order
 
 # Create your views here.
 
@@ -59,10 +58,12 @@ class ShowClientsToNewOrderView(View):
 
 def create_order(request, pk):
     client = Client.objects.get(id=pk)
-    produtos = Variation.objects.all()
+    produtos = Product.objects.all()
+    carrinho = request.session.get('carrinho', {})
     # TODO criar template para mostrar produtos e adicionar ao carrinho
     context = {
         'cliente': client,
         'produtos': produtos,
+        'carrinho': carrinho
     }
     return render(request, 'orders/pages/new_order_itens.html', context)
